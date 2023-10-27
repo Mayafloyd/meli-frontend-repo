@@ -1,22 +1,21 @@
-import { useEffect, useState } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import ResultView from "./pages/ResultView";
+import ProductView from "./pages/ProductView";
 
 function App() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch(`/api/users`)
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
-
   return (
-    <div className="App">
-      <h1>Users</h1>
-      {users.map((user) => (
-        <img key={user.id} src={user.url} alt="cat" width="500" height="600" />
-      ))}
-    </div>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/items" element={<ResultView />} />
+          <Route path="/items/:id" element={<ProductView />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 

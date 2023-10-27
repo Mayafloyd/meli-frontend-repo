@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background;
+  padding: 16px 0px;
+  min-height: calc(100vh - 50px);
+  &__breadcrumbs {
+    width: 1200px;
+    text-align: left;
+    font-size: 14px;
+    color: $small-text;
+    margin-top: 0px;
+    margin-bottom: 16px;
+  }
+
+  &__child {
+    width: 1200px;
+    // padding: 0px 16px;
+    border-radius: 4px;
+    background-color: white;
+  }
+}

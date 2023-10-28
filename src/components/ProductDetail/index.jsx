@@ -48,7 +48,9 @@ const ProductDetail = (props) => {
           Descripción del producto
         </h2>
         <p className="productContainer__secondChild__text">
-          {description ?? ""}
+          {description || description !== ""
+            ? description
+            : "Este producto no tiene descripción"}
         </p>
       </div>
     </div>

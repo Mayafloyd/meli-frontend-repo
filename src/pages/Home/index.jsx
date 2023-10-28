@@ -11,7 +11,6 @@ const Home = () => {
 
   return users.map((user) => (
     <div>
-      {/* <h1>hi</h1> */}
       <img key={user.id} src={user.url} alt="cat" width="500" height="600" />
     </div>
   ));

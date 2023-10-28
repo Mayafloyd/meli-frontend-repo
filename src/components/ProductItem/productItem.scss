@@ -9,7 +9,7 @@
   &__img {
     width: 180px;
     height: 180px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 4px;
   }
   &__infoContainer {
@@ -18,10 +18,18 @@
     padding: 16px;
 
     &__cost {
-      font-size: 24px;
-      margin-bottom: 32px;
-      margin-top: 0px;
+      position: relative;
+      p {
+        font-size: 24px;
+        margin-bottom: 32px;
+        margin-top: 0px;
+        margin-right: 10px;
+      }
+      img {
+        margin-left: 15px;
+      }
     }
+
     &__name {
       margin-top: 0px;
       width: 55%;

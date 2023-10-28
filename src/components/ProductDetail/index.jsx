@@ -1,24 +1,42 @@
 import React from "react";
 import "./productDetail.scss";
 
-const ProductDetail = () => {
+const ProductDetail = (props) => {
+  const {
+    condition,
+    soldQuantity,
+    title,
+    price,
+    decimals,
+    currency,
+    picture,
+    description,
+  } = props;
+  const totalPrice = price + decimals;
   return (
     <div className="productContainer">
       <div className="productContainer__firstChild">
         <img
-          src="https://cdn2.thecatapi.com/images/cks.jpg"
+          src={
+            //eslint-disable-next-line
+            picture.replace(/(http[s]?:\/\/[^\/]+\/..)/, "$1NQ_NP_2X_") ?? ""
+          } //Una pequeña ayuda con expresiones regulares, para que la foto no fuera originalmente en miniatura (toda pixelada)
           alt="productoDetalle"
           className="productContainer__firstChild__img"
         />
         <div className="productContainer__firstChild__description">
           <p className="productContainer__firstChild__description__subtitle">
-            Nuevo 234 vendidos
+            {condition === "new" ? "Nuevo" : ""}{" "}
+            {soldQuantity ? ` - ${soldQuantity} vendidos` : ""}
           </p>
           <h1 className="productContainer__firstChild__description__title">
-            Deco reverse sombrero oxfox
+            {title ?? ""}
           </h1>
           <p className="productContainer__firstChild__description__cost">
-            $ 1.980
+            {totalPrice?.toLocaleString("es-AR", {
+              style: "currency",
+              currency: currency,
+            }) ?? ""}
           </p>
           <button className="productContainer__firstChild__description__btn">
             Comprar
@@ -30,10 +48,7 @@ const ProductDetail = () => {
           Descripción del producto
         </h2>
         <p className="productContainer__secondChild__text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, quo
-          nesciunt. Error dignissimos reprehenderit ratione in neque tenetur,
-          perferendis impedit maiores ea sunt officiis autem, optio nostrum cum
-          nisi quis!
+          {description ?? ""}
         </p>
       </div>
     </div>

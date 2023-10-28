@@ -4,6 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 import ProductItem from "../../components/ProductItem";
 import "./resultView.scss";
 import Loading from "../../components/Loading";
+import NotFound from "../../components/NotFound";
 
 const ResultView = () => {
   const location = useLocation();
@@ -23,9 +24,9 @@ const ResultView = () => {
       });
   }, [myParam]);
 
-  console.log("items", items_);
   return (
     <div>
+      {/* Se hace una condición para que se muestre o el loading, o la lista de productos o un texto de not found */}
       {loading ? (
         <Loading />
       ) : items_ && items_.length > 0 ? (
@@ -41,7 +42,9 @@ const ResultView = () => {
             />
           </Link>
         ))
-      ) : null}
+      ) : (
+        <NotFound text={"No hay resultados para esta búsqueda"} />
+      )}
     </div>
   );
 };

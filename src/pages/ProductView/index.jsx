@@ -13,25 +13,28 @@ const ProductView = () => {
     if (!id) {
       return;
     }
+
     // Realizamos el llamado a la API
-    fetch(`/api/items/${id}`)
-      .then((response) => response.json()) // Convertimos la respuesta a JSON
-      .then((data) => {
-        // Guardamos los datos en el estado del componente
-        setData(data?.item);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        // Manejamos cualquier error que ocurra durante el fetch
-        console.error("Hubo un problema con la petición Fetch:", error);
-      });
+    const getAPIItems = async () => {
+      if (id) {
+        try {
+          const response = await fetch(`/api/items/${id}`);
+          const data = await response?.json();
+          setData(data?.item);
+          setLoading(false);
+        } catch (error) {
+          setLoading(false);
+          // Manejamos cualquier error que ocurra durante el fetch
+          console.error("Hubo un problema con la petición Fetch:", error);
+        }
+      }
+    };
+    getAPIItems();
   }, [id]);
 
-  console.log("data", data);
   return (
     <div>
-      {/* ProductView {id} */}
+      {/* Se hace una condición para que se muestre o el loading, o el producto o un texto de not found */}
       {loading ? (
         <Loading />
       ) : data !== null && data ? (

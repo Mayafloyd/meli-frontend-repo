@@ -2,6 +2,8 @@ import React from "react";
 import "./productDetail.scss";
 
 const ProductDetail = (props) => {
+  //Este componente exclusivamente dedicado a reenderizar un producto y sus detalles
+
   const {
     condition,
     soldQuantity,
@@ -21,11 +23,12 @@ const ProductDetail = (props) => {
             //eslint-disable-next-line
             picture.replace(/(http[s]?:\/\/[^\/]+\/..)/, "$1NQ_NP_2X_") ?? ""
           } //Una pequeña ayuda con expresiones regulares, para que la foto no fuera originalmente en miniatura (toda pixelada)
-          alt="productoDetalle"
+          alt={(title ?? "") + "imagen"}
           className="productContainer__firstChild__img"
         />
         <div className="productContainer__firstChild__description">
           <p className="productContainer__firstChild__description__subtitle">
+            {/* Esto lo que hace es preguntar si es nuevo y si viene con la propiedad de solQuantity */}
             {condition === "new" ? "Nuevo" : ""}{" "}
             {soldQuantity ? ` - ${soldQuantity} vendidos` : ""}
           </p>
@@ -33,6 +36,7 @@ const ProductDetail = (props) => {
             {title ?? ""}
           </h1>
           <p className="productContainer__firstChild__description__cost">
+            {/* Esta parte lo que hace es usar toLocaleString para que según el currency se de estilo al tipo de moneda de cada pais  */}
             {totalPrice?.toLocaleString("es-AR", {
               style: "currency",
               currency: currency,

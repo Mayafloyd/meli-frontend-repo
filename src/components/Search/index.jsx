@@ -6,10 +6,34 @@ const Search = () => {
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
 
-  const handleSearch = () => {
-    // Construye la URL con el query parameter y redirige a la ruta deseada
-    navigate(`/items?search=${inputText}`);
+  const handleSearch = async () => {
+    // Esto se hace para mirar la opción de que al ingresar un id, directamente lleve a la vista detallada del producto
+    const idProduct = await fetch(`/api/items/${inputText}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Guardamos los datos en el estado del componente
+        console.log("dataproduct", data?.item);
+        if (data?.item) {
+          return true;
+        }
+        return false;
+      })
+      .catch((error) => {
+        console.error(
+          "Hubo un problema con la petición Fetch en idProduct:",
+          error
+        );
+        return false;
+      });
+
+    if (idProduct) {
+      navigate(`/items/${inputText}`);
+    } else {
+      navigate(`/items?search=${inputText}`);
+    }
   };
+
+  //esto es para que reconozca la tecla enter para buscar
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch();

@@ -6,6 +6,7 @@ import ResultView from "./pages/ResultView";
 import ProductView from "./pages/ProductView";
 
 function App() {
+  //Bueno acá la idea es tener la configuración de rutas de la aplicación
   return (
     <Router>
       <Layout>

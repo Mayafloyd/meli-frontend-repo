@@ -13,4 +13,4 @@ root.render(
 
 // Esto de webVitals es para ver o tener por ahí las analiticas del perfomance de la app
 reportWebVitals();
-reportWebVitals(console.log);
+// reportWebVitals(console.log);

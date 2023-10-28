@@ -12,7 +12,7 @@ const Search = () => {
       .then((response) => response.json())
       .then((data) => {
         // Guardamos los datos en el estado del componente
-        console.log("dataproduct", data?.item);
+
         if (data?.item) {
           return true;
         }

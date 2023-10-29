@@ -1,5 +1,19 @@
-Este proyecto fue creado para el test practico de front-end de mercado libre <3
+### Este proyecto fue creado para el test practico de front-end de mercado libre <3
 
-Para correr el proyecto :
+# Para correr el proyecto :
 
-### `npm run start`
+Este proyecto fue desarrollado con [Node.js](https://nodejs.org/) v16.19.0
+Instala las dependencias y corre el servidor:
+
+```sh
+cd meli-frontend-repo-main
+npm install
+npm run start
+```
+
+## Para correr los test:
+
+```sh
+cd meli-frontend-repo-main
+npm run test
+```

@@ -31,7 +31,12 @@ const ResultView = () => {
         <Loading />
       ) : items_ && items_.length > 0 ? (
         items_.map((item_) => (
-          <Link key={item_?.id} to={`/items/${item_?.id}`} className="link">
+          <Link
+            data-testid="productItem"
+            key={item_?.id}
+            to={`/items/${item_?.id}`}
+            className="link"
+          >
             <ProductItem
               image={item_?.picture}
               title={item_?.title}

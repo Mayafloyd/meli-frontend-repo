@@ -16,7 +16,7 @@ const ProductDetail = (props) => {
   } = props;
   const totalPrice = price + decimals;
   return (
-    <div className="productContainer">
+    <div data-testid="product" className="productContainer">
       <div className="productContainer__firstChild">
         <img
           src={
